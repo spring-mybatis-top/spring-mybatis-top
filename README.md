@@ -37,3 +37,7 @@
 本软件是在JHipster基础上进行二次开发的，Jhipster是商业友好的开源许可证（Apache-2.0 license）,github 20k星，4k fork [https://github.com/jhipster/generator-jhipster](https://github.com/jhipster/generator-jhipster)。
 
 本软件还使用了JDL Studio，JDL Studio同样是商业友好开源许可证（Apache-2.0 license） [https://github.com/jhipster/jdl-studio](https://github.com/jhipster/jdl-studio)。
+
+## 开发使用等请参考官网文档
+
+官网： [http://spring-mybatis.top](http://spring-mybatis.top)
