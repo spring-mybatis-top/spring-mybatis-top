@@ -1,0 +1,37 @@
+{
+  "sampleProjectAllFildApp": {
+    "allField": {
+      "home": {
+        "title": "All Fields",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new All Field",
+        "createOrEditLabel": "Create or edit a All Field",
+        "notFound": "No All Fields found"
+      },
+      "created": "A new All Field is created with identifier {{ param }}",
+      "updated": "A All Field is updated with identifier {{ param }}",
+      "deleted": "A All Field is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete All Field {{ id }}?"
+      },
+      "detail": {
+        "title": "All Field"
+      },
+      "id": "ID",
+      "name": "Name",
+      "nameInteger": "Name Integer",
+      "nameLong": "Name Long",
+      "nameBigDecimal": "Name Big Decimal",
+      "nameFloat": "Name Float",
+      "nameDouble": "Name Double",
+      "nameBoolean": "Name Boolean",
+      "nameLocalDate": "Name Local Date",
+      "nameZonedDateTime": "Name Zoned Date Time",
+      "nameInstant": "Name Instant",
+      "nameBlob": "Name Blob",
+      "nameAnyBlob": "Name Any Blob",
+      "nameImageBlob": "Name Image Blob",
+      "nameTextBlob": "Name Text Blob"
+    }
+  }
+}

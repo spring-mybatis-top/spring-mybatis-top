@@ -1,0 +1,25 @@
+{
+  "helloWorldApp": {
+    "helloWorld": {
+      "home": {
+        "title": "Hello Worlds",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Hello World",
+        "createOrEditLabel": "创建或编辑 Hello World",
+        "notFound": "No Hello Worlds found"
+      },
+      "created": "Hello World {{ param }} 创建成功",
+      "updated": "Hello World {{ param }} 更新成功",
+      "deleted": "Hello World {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Hello World {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Hello World"
+      },
+      "id": "ID",
+      "name": "Name",
+      "age": "Age"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "applications": ["sampleProjectAllFild"],
+  "changelogDate": "20111111000400",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "department",
+  "fields": [
+    {
+      "fieldName": "deptName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "empNo",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Department",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "myDept",
+      "relationshipName": "myEmployees",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,37 @@
+{
+  "sampleProjectAllFildApp": {
+    "allField": {
+      "home": {
+        "title": "All Fields",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 All Field",
+        "createOrEditLabel": "创建或编辑 All Field",
+        "notFound": "No All Fields found"
+      },
+      "created": "All Field {{ param }} 创建成功",
+      "updated": "All Field {{ param }} 更新成功",
+      "deleted": "All Field {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 All Field {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "All Field"
+      },
+      "id": "ID",
+      "name": "Name",
+      "nameInteger": "Name Integer",
+      "nameLong": "Name Long",
+      "nameBigDecimal": "Name Big Decimal",
+      "nameFloat": "Name Float",
+      "nameDouble": "Name Double",
+      "nameBoolean": "Name Boolean",
+      "nameLocalDate": "Name Local Date",
+      "nameZonedDateTime": "Name Zoned Date Time",
+      "nameInstant": "Name Instant",
+      "nameBlob": "Name Blob",
+      "nameAnyBlob": "Name Any Blob",
+      "nameImageBlob": "Name Image Blob",
+      "nameTextBlob": "Name Text Blob"
+    }
+  }
+}

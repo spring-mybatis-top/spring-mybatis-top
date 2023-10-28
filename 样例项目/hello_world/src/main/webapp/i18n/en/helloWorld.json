@@ -1,0 +1,25 @@
+{
+  "helloWorldApp": {
+    "helloWorld": {
+      "home": {
+        "title": "Hello Worlds",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Hello World",
+        "createOrEditLabel": "Create or edit a Hello World",
+        "notFound": "No Hello Worlds found"
+      },
+      "created": "A new Hello World is created with identifier {{ param }}",
+      "updated": "A Hello World is updated with identifier {{ param }}",
+      "deleted": "A Hello World is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Hello World {{ id }}?"
+      },
+      "detail": {
+        "title": "Hello World"
+      },
+      "id": "ID",
+      "name": "Name",
+      "age": "Age"
+    }
+  }
+}

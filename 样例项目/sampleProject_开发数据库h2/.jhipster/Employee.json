@@ -1,0 +1,36 @@
+{
+  "applications": ["hello_world"],
+  "changelogDate": "20111111000300",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "empName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "salary",
+      "fieldType": "Long",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "100000",
+      "fieldValidateRulesMin": "1"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Employee",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "deptName",
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "myEmployees",
+      "relationshipName": "myDept",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

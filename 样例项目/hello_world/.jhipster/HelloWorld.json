@@ -1,0 +1,24 @@
+{
+  "applications": ["hello_world"],
+  "changelogDate": "20111111000100",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "hello_world",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "HelloWorld",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

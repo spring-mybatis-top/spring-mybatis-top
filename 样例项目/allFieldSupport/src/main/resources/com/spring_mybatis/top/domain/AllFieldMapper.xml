@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring_mybatis.top.domain.AllFieldMapper">
+  <resultMap id="BaseResultMap" type="com.spring_mybatis.top.domain.AllField">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ALL_LOWERCASE_REGEX" jdbcType="VARCHAR" property="allLowercaseRegex" />
+    <result column="NAME_INTEGER" jdbcType="INTEGER" property="nameInteger" />
+    <result column="NAME_LONG" jdbcType="BIGINT" property="nameLong" />
+    <result column="NAME_BIG_DECIMAL" jdbcType="DECIMAL" property="nameBigDecimal" />
+    <result column="NAME_FLOAT" jdbcType="REAL" property="nameFloat" />
+    <result column="NAME_DOUBLE" jdbcType="DOUBLE" property="nameDouble" />
+    <result column="NAME_BOOLEAN" jdbcType="BOOLEAN" property="nameBoolean" />
+    <result column="NAME_LOCAL_DATE" jdbcType="DATE" property="nameLocalDate" />
+    <result column="NAME_ZONED_DATE_TIME" jdbcType="TIMESTAMP" property="nameZonedDateTime" />
+    <result column="NAME_INSTANT" jdbcType="TIMESTAMP" property="nameInstant" />
+    <result column="NAME_BLOB_CONTENT_TYPE" jdbcType="VARCHAR" property="nameBlobContentType" />
+    <result column="NAME_ANY_BLOB_CONTENT_TYPE" jdbcType="VARCHAR" property="nameAnyBlobContentType" />
+    <result column="NAME_IMAGE_BLOB_CONTENT_TYPE" jdbcType="VARCHAR" property="nameImageBlobContentType" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.spring_mybatis.top.domain.AllFieldWithBLOBs">
+    <result column="NAME_BLOB" jdbcType="BLOB" property="nameBlob" />
+    <result column="NAME_ANY_BLOB" jdbcType="BLOB" property="nameAnyBlob" />
+    <result column="NAME_IMAGE_BLOB" jdbcType="BLOB" property="nameImageBlob" />
+    <result column="NAME_TEXT_BLOB" jdbcType="CLOB" property="nameTextBlob" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, ALL_LOWERCASE_REGEX, NAME_INTEGER, NAME_LONG, NAME_BIG_DECIMAL, NAME_FLOAT, NAME_DOUBLE, 
+    NAME_BOOLEAN, NAME_LOCAL_DATE, NAME_ZONED_DATE_TIME, NAME_INSTANT, NAME_BLOB_CONTENT_TYPE, 
+    NAME_ANY_BLOB_CONTENT_TYPE, NAME_IMAGE_BLOB_CONTENT_TYPE
+  </sql>
+  <sql id="Blob_Column_List">
+    NAME_BLOB, NAME_ANY_BLOB, NAME_IMAGE_BLOB, NAME_TEXT_BLOB
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.spring_mybatis.top.domain.AllFieldExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ALL_FIELD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.spring_mybatis.top.domain.AllFieldExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ALL_FIELD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ALL_FIELD
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ALL_FIELD
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spring_mybatis.top.domain.AllFieldExample">
+    delete from ALL_FIELD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.spring_mybatis.top.domain.AllFieldWithBLOBs" useGeneratedKeys="true">
+    insert into ALL_FIELD (ALL_LOWERCASE_REGEX, NAME_INTEGER, NAME_LONG, 
+      NAME_BIG_DECIMAL, NAME_FLOAT, NAME_DOUBLE, 
+      NAME_BOOLEAN, NAME_LOCAL_DATE, NAME_ZONED_DATE_TIME, 
+      NAME_INSTANT, NAME_BLOB_CONTENT_TYPE, NAME_ANY_BLOB_CONTENT_TYPE, 
+      NAME_IMAGE_BLOB_CONTENT_TYPE, NAME_BLOB, NAME_ANY_BLOB, 
+      NAME_IMAGE_BLOB, NAME_TEXT_BLOB)
+    values (#{allLowercaseRegex,jdbcType=VARCHAR}, #{nameInteger,jdbcType=INTEGER}, #{nameLong,jdbcType=BIGINT}, 
+      #{nameBigDecimal,jdbcType=DECIMAL}, #{nameFloat,jdbcType=REAL}, #{nameDouble,jdbcType=DOUBLE}, 
+      #{nameBoolean,jdbcType=BOOLEAN}, #{nameLocalDate,jdbcType=DATE}, #{nameZonedDateTime,jdbcType=TIMESTAMP}, 
+      #{nameInstant,jdbcType=TIMESTAMP}, #{nameBlobContentType,jdbcType=VARCHAR}, #{nameAnyBlobContentType,jdbcType=VARCHAR}, 
+      #{nameImageBlobContentType,jdbcType=VARCHAR}, #{nameBlob,jdbcType=BLOB}, #{nameAnyBlob,jdbcType=BLOB}, 
+      #{nameImageBlob,jdbcType=BLOB}, #{nameTextBlob,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.spring_mybatis.top.domain.AllFieldWithBLOBs" useGeneratedKeys="true">
+    insert into ALL_FIELD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="allLowercaseRegex != null">
+        ALL_LOWERCASE_REGEX,
+      </if>
+      <if test="nameInteger != null">
+        NAME_INTEGER,
+      </if>
+      <if test="nameLong != null">
+        NAME_LONG,
+      </if>
+      <if test="nameBigDecimal != null">
+        NAME_BIG_DECIMAL,
+      </if>
+      <if test="nameFloat != null">
+        NAME_FLOAT,
+      </if>
+      <if test="nameDouble != null">
+        NAME_DOUBLE,
+      </if>
+      <if test="nameBoolean != null">
+        NAME_BOOLEAN,
+      </if>
+      <if test="nameLocalDate != null">
+        NAME_LOCAL_DATE,
+      </if>
+      <if test="nameZonedDateTime != null">
+        NAME_ZONED_DATE_TIME,
+      </if>
+      <if test="nameInstant != null">
+        NAME_INSTANT,
+      </if>
+      <if test="nameBlobContentType != null">
+        NAME_BLOB_CONTENT_TYPE,
+      </if>
+      <if test="nameAnyBlobContentType != null">
+        NAME_ANY_BLOB_CONTENT_TYPE,
+      </if>
+      <if test="nameImageBlobContentType != null">
+        NAME_IMAGE_BLOB_CONTENT_TYPE,
+      </if>
+      <if test="nameBlob != null">
+        NAME_BLOB,
+      </if>
+      <if test="nameAnyBlob != null">
+        NAME_ANY_BLOB,
+      </if>
+      <if test="nameImageBlob != null">
+        NAME_IMAGE_BLOB,
+      </if>
+      <if test="nameTextBlob != null">
+        NAME_TEXT_BLOB,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="allLowercaseRegex != null">
+        #{allLowercaseRegex,jdbcType=VARCHAR},
+      </if>
+      <if test="nameInteger != null">
+        #{nameInteger,jdbcType=INTEGER},
+      </if>
+      <if test="nameLong != null">
+        #{nameLong,jdbcType=BIGINT},
+      </if>
+      <if test="nameBigDecimal != null">
+        #{nameBigDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="nameFloat != null">
+        #{nameFloat,jdbcType=REAL},
+      </if>
+      <if test="nameDouble != null">
+        #{nameDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="nameBoolean != null">
+        #{nameBoolean,jdbcType=BOOLEAN},
+      </if>
+      <if test="nameLocalDate != null">
+        #{nameLocalDate,jdbcType=DATE},
+      </if>
+      <if test="nameZonedDateTime != null">
+        #{nameZonedDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nameInstant != null">
+        #{nameInstant,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nameBlobContentType != null">
+        #{nameBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="nameAnyBlobContentType != null">
+        #{nameAnyBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="nameImageBlobContentType != null">
+        #{nameImageBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="nameBlob != null">
+        #{nameBlob,jdbcType=BLOB},
+      </if>
+      <if test="nameAnyBlob != null">
+        #{nameAnyBlob,jdbcType=BLOB},
+      </if>
+      <if test="nameImageBlob != null">
+        #{nameImageBlob,jdbcType=BLOB},
+      </if>
+      <if test="nameTextBlob != null">
+        #{nameTextBlob,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spring_mybatis.top.domain.AllFieldExample" resultType="java.lang.Long">
+    select count(*) from ALL_FIELD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ALL_FIELD
+    <set>
+      <if test="row.id != null">
+        ID = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.allLowercaseRegex != null">
+        ALL_LOWERCASE_REGEX = #{row.allLowercaseRegex,jdbcType=VARCHAR},
+      </if>
+      <if test="row.nameInteger != null">
+        NAME_INTEGER = #{row.nameInteger,jdbcType=INTEGER},
+      </if>
+      <if test="row.nameLong != null">
+        NAME_LONG = #{row.nameLong,jdbcType=BIGINT},
+      </if>
+      <if test="row.nameBigDecimal != null">
+        NAME_BIG_DECIMAL = #{row.nameBigDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="row.nameFloat != null">
+        NAME_FLOAT = #{row.nameFloat,jdbcType=REAL},
+      </if>
+      <if test="row.nameDouble != null">
+        NAME_DOUBLE = #{row.nameDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="row.nameBoolean != null">
+        NAME_BOOLEAN = #{row.nameBoolean,jdbcType=BOOLEAN},
+      </if>
+      <if test="row.nameLocalDate != null">
+        NAME_LOCAL_DATE = #{row.nameLocalDate,jdbcType=DATE},
+      </if>
+      <if test="row.nameZonedDateTime != null">
+        NAME_ZONED_DATE_TIME = #{row.nameZonedDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.nameInstant != null">
+        NAME_INSTANT = #{row.nameInstant,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.nameBlobContentType != null">
+        NAME_BLOB_CONTENT_TYPE = #{row.nameBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.nameAnyBlobContentType != null">
+        NAME_ANY_BLOB_CONTENT_TYPE = #{row.nameAnyBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.nameImageBlobContentType != null">
+        NAME_IMAGE_BLOB_CONTENT_TYPE = #{row.nameImageBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.nameBlob != null">
+        NAME_BLOB = #{row.nameBlob,jdbcType=BLOB},
+      </if>
+      <if test="row.nameAnyBlob != null">
+        NAME_ANY_BLOB = #{row.nameAnyBlob,jdbcType=BLOB},
+      </if>
+      <if test="row.nameImageBlob != null">
+        NAME_IMAGE_BLOB = #{row.nameImageBlob,jdbcType=BLOB},
+      </if>
+      <if test="row.nameTextBlob != null">
+        NAME_TEXT_BLOB = #{row.nameTextBlob,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update ALL_FIELD
+    set ID = #{row.id,jdbcType=BIGINT},
+      ALL_LOWERCASE_REGEX = #{row.allLowercaseRegex,jdbcType=VARCHAR},
+      NAME_INTEGER = #{row.nameInteger,jdbcType=INTEGER},
+      NAME_LONG = #{row.nameLong,jdbcType=BIGINT},
+      NAME_BIG_DECIMAL = #{row.nameBigDecimal,jdbcType=DECIMAL},
+      NAME_FLOAT = #{row.nameFloat,jdbcType=REAL},
+      NAME_DOUBLE = #{row.nameDouble,jdbcType=DOUBLE},
+      NAME_BOOLEAN = #{row.nameBoolean,jdbcType=BOOLEAN},
+      NAME_LOCAL_DATE = #{row.nameLocalDate,jdbcType=DATE},
+      NAME_ZONED_DATE_TIME = #{row.nameZonedDateTime,jdbcType=TIMESTAMP},
+      NAME_INSTANT = #{row.nameInstant,jdbcType=TIMESTAMP},
+      NAME_BLOB_CONTENT_TYPE = #{row.nameBlobContentType,jdbcType=VARCHAR},
+      NAME_ANY_BLOB_CONTENT_TYPE = #{row.nameAnyBlobContentType,jdbcType=VARCHAR},
+      NAME_IMAGE_BLOB_CONTENT_TYPE = #{row.nameImageBlobContentType,jdbcType=VARCHAR},
+      NAME_BLOB = #{row.nameBlob,jdbcType=BLOB},
+      NAME_ANY_BLOB = #{row.nameAnyBlob,jdbcType=BLOB},
+      NAME_IMAGE_BLOB = #{row.nameImageBlob,jdbcType=BLOB},
+      NAME_TEXT_BLOB = #{row.nameTextBlob,jdbcType=CLOB}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ALL_FIELD
+    set ID = #{row.id,jdbcType=BIGINT},
+      ALL_LOWERCASE_REGEX = #{row.allLowercaseRegex,jdbcType=VARCHAR},
+      NAME_INTEGER = #{row.nameInteger,jdbcType=INTEGER},
+      NAME_LONG = #{row.nameLong,jdbcType=BIGINT},
+      NAME_BIG_DECIMAL = #{row.nameBigDecimal,jdbcType=DECIMAL},
+      NAME_FLOAT = #{row.nameFloat,jdbcType=REAL},
+      NAME_DOUBLE = #{row.nameDouble,jdbcType=DOUBLE},
+      NAME_BOOLEAN = #{row.nameBoolean,jdbcType=BOOLEAN},
+      NAME_LOCAL_DATE = #{row.nameLocalDate,jdbcType=DATE},
+      NAME_ZONED_DATE_TIME = #{row.nameZonedDateTime,jdbcType=TIMESTAMP},
+      NAME_INSTANT = #{row.nameInstant,jdbcType=TIMESTAMP},
+      NAME_BLOB_CONTENT_TYPE = #{row.nameBlobContentType,jdbcType=VARCHAR},
+      NAME_ANY_BLOB_CONTENT_TYPE = #{row.nameAnyBlobContentType,jdbcType=VARCHAR},
+      NAME_IMAGE_BLOB_CONTENT_TYPE = #{row.nameImageBlobContentType,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spring_mybatis.top.domain.AllFieldWithBLOBs">
+    update ALL_FIELD
+    <set>
+      <if test="allLowercaseRegex != null">
+        ALL_LOWERCASE_REGEX = #{allLowercaseRegex,jdbcType=VARCHAR},
+      </if>
+      <if test="nameInteger != null">
+        NAME_INTEGER = #{nameInteger,jdbcType=INTEGER},
+      </if>
+      <if test="nameLong != null">
+        NAME_LONG = #{nameLong,jdbcType=BIGINT},
+      </if>
+      <if test="nameBigDecimal != null">
+        NAME_BIG_DECIMAL = #{nameBigDecimal,jdbcType=DECIMAL},
+      </if>
+      <if test="nameFloat != null">
+        NAME_FLOAT = #{nameFloat,jdbcType=REAL},
+      </if>
+      <if test="nameDouble != null">
+        NAME_DOUBLE = #{nameDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="nameBoolean != null">
+        NAME_BOOLEAN = #{nameBoolean,jdbcType=BOOLEAN},
+      </if>
+      <if test="nameLocalDate != null">
+        NAME_LOCAL_DATE = #{nameLocalDate,jdbcType=DATE},
+      </if>
+      <if test="nameZonedDateTime != null">
+        NAME_ZONED_DATE_TIME = #{nameZonedDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nameInstant != null">
+        NAME_INSTANT = #{nameInstant,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nameBlobContentType != null">
+        NAME_BLOB_CONTENT_TYPE = #{nameBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="nameAnyBlobContentType != null">
+        NAME_ANY_BLOB_CONTENT_TYPE = #{nameAnyBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="nameImageBlobContentType != null">
+        NAME_IMAGE_BLOB_CONTENT_TYPE = #{nameImageBlobContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="nameBlob != null">
+        NAME_BLOB = #{nameBlob,jdbcType=BLOB},
+      </if>
+      <if test="nameAnyBlob != null">
+        NAME_ANY_BLOB = #{nameAnyBlob,jdbcType=BLOB},
+      </if>
+      <if test="nameImageBlob != null">
+        NAME_IMAGE_BLOB = #{nameImageBlob,jdbcType=BLOB},
+      </if>
+      <if test="nameTextBlob != null">
+        NAME_TEXT_BLOB = #{nameTextBlob,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.spring_mybatis.top.domain.AllFieldWithBLOBs">
+    update ALL_FIELD
+    set ALL_LOWERCASE_REGEX = #{allLowercaseRegex,jdbcType=VARCHAR},
+      NAME_INTEGER = #{nameInteger,jdbcType=INTEGER},
+      NAME_LONG = #{nameLong,jdbcType=BIGINT},
+      NAME_BIG_DECIMAL = #{nameBigDecimal,jdbcType=DECIMAL},
+      NAME_FLOAT = #{nameFloat,jdbcType=REAL},
+      NAME_DOUBLE = #{nameDouble,jdbcType=DOUBLE},
+      NAME_BOOLEAN = #{nameBoolean,jdbcType=BOOLEAN},
+      NAME_LOCAL_DATE = #{nameLocalDate,jdbcType=DATE},
+      NAME_ZONED_DATE_TIME = #{nameZonedDateTime,jdbcType=TIMESTAMP},
+      NAME_INSTANT = #{nameInstant,jdbcType=TIMESTAMP},
+      NAME_BLOB_CONTENT_TYPE = #{nameBlobContentType,jdbcType=VARCHAR},
+      NAME_ANY_BLOB_CONTENT_TYPE = #{nameAnyBlobContentType,jdbcType=VARCHAR},
+      NAME_IMAGE_BLOB_CONTENT_TYPE = #{nameImageBlobContentType,jdbcType=VARCHAR},
+      NAME_BLOB = #{nameBlob,jdbcType=BLOB},
+      NAME_ANY_BLOB = #{nameAnyBlob,jdbcType=BLOB},
+      NAME_IMAGE_BLOB = #{nameImageBlob,jdbcType=BLOB},
+      NAME_TEXT_BLOB = #{nameTextBlob,jdbcType=CLOB}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spring_mybatis.top.domain.AllField">
+    update ALL_FIELD
+    set ALL_LOWERCASE_REGEX = #{allLowercaseRegex,jdbcType=VARCHAR},
+      NAME_INTEGER = #{nameInteger,jdbcType=INTEGER},
+      NAME_LONG = #{nameLong,jdbcType=BIGINT},
+      NAME_BIG_DECIMAL = #{nameBigDecimal,jdbcType=DECIMAL},
+      NAME_FLOAT = #{nameFloat,jdbcType=REAL},
+      NAME_DOUBLE = #{nameDouble,jdbcType=DOUBLE},
+      NAME_BOOLEAN = #{nameBoolean,jdbcType=BOOLEAN},
+      NAME_LOCAL_DATE = #{nameLocalDate,jdbcType=DATE},
+      NAME_ZONED_DATE_TIME = #{nameZonedDateTime,jdbcType=TIMESTAMP},
+      NAME_INSTANT = #{nameInstant,jdbcType=TIMESTAMP},
+      NAME_BLOB_CONTENT_TYPE = #{nameBlobContentType,jdbcType=VARCHAR},
+      NAME_ANY_BLOB_CONTENT_TYPE = #{nameAnyBlobContentType,jdbcType=VARCHAR},
+      NAME_IMAGE_BLOB_CONTENT_TYPE = #{nameImageBlobContentType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

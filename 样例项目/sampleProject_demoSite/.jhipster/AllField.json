@@ -1,0 +1,107 @@
+{
+  "applications": ["sampleProjectAllFild"],
+  "changelogDate": "20111111000700",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "all_field",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "^[A-Z][a-z]+d$"
+    },
+    {
+      "fieldName": "nameInteger",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "10"
+    },
+    {
+      "fieldName": "nameLong",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "10"
+    },
+    {
+      "fieldName": "nameBigDecimal",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "10"
+    },
+    {
+      "fieldName": "nameFloat",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "10"
+    },
+    {
+      "fieldName": "nameDouble",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "10"
+    },
+    {
+      "fieldName": "nameBoolean",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nameLocalDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nameZonedDateTime",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nameInstant",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nameBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required", "minbytes", "maxbytes"],
+      "fieldValidateRulesMaxbytes": "100000",
+      "fieldValidateRulesMinbytes": "10"
+    },
+    {
+      "fieldName": "nameAnyBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required", "minbytes", "maxbytes"],
+      "fieldValidateRulesMaxbytes": "100000",
+      "fieldValidateRulesMinbytes": "10"
+    },
+    {
+      "fieldName": "nameImageBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required", "minbytes", "maxbytes"],
+      "fieldValidateRulesMaxbytes": "100000",
+      "fieldValidateRulesMinbytes": "10"
+    },
+    {
+      "fieldName": "nameTextBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AllField",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

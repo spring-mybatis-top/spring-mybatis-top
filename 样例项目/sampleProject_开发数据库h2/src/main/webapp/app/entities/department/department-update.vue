@@ -1,0 +1,66 @@
+<template>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
+        <h2
+          id="helloWorldApp.department.home.createOrEditLabel"
+          data-cy="DepartmentCreateUpdateHeading"
+          v-text="$t('helloWorldApp.department.home.createOrEditLabel')"
+        >
+          Create or edit a Department
+        </h2>
+        <div>
+          <div class="form-group" v-if="department.id">
+            <label for="id" v-text="$t('global.field.id')">ID</label>
+            <input type="text" class="form-control" id="id" name="id" v-model="department.id" readonly />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('helloWorldApp.department.deptName')" for="department-deptName">Dept Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="deptName"
+              id="department-deptName"
+              data-cy="deptName"
+              :class="{ valid: !$v.department.deptName.$invalid, invalid: $v.department.deptName.$invalid }"
+              v-model="$v.department.deptName.$model"
+              required
+            />
+            <div v-if="$v.department.deptName.$anyDirty && $v.department.deptName.$invalid">
+              <small class="form-text text-danger" v-if="!$v.department.deptName.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('helloWorldApp.department.empNo')" for="department-empNo">Emp No</label>
+            <input
+              type="number"
+              class="form-control"
+              name="empNo"
+              id="department-empNo"
+              data-cy="empNo"
+              :class="{ valid: !$v.department.empNo.$invalid, invalid: $v.department.empNo.$invalid }"
+              v-model.number="$v.department.empNo.$model"
+            />
+          </div>
+        </div>
+        <div>
+          <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
+          </button>
+          <button
+            type="submit"
+            id="save-entity"
+            data-cy="entityCreateSaveButton"
+            :disabled="$v.department.$invalid || isSaving"
+            class="btn btn-primary"
+          >
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+<script lang="ts" src="./department-update.component.ts"></script>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring_mybatis.top.sample.domain.PersonMapper">
+  <resultMap id="BaseResultMap" type="com.spring_mybatis.top.sample.domain.Person">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="PERSON_NAME" jdbcType="VARCHAR" property="personName" />
+    <result column="AGE" jdbcType="BIGINT" property="age" />
+    <result column="MYINFO_ID" jdbcType="BIGINT" property="myinfoId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, PERSON_NAME, AGE, MYINFO_ID
+  </sql>
+  <select id="selectByExample" parameterType="com.spring_mybatis.top.sample.domain.PersonExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from PERSON
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PERSON
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from PERSON
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spring_mybatis.top.sample.domain.PersonExample">
+    delete from PERSON
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.spring_mybatis.top.sample.domain.Person" useGeneratedKeys="true">
+    insert into PERSON (PERSON_NAME, AGE, MYINFO_ID
+      )
+    values (#{personName,jdbcType=VARCHAR}, #{age,jdbcType=BIGINT}, #{myinfoId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.spring_mybatis.top.sample.domain.Person" useGeneratedKeys="true">
+    insert into PERSON
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personName != null">
+        PERSON_NAME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="myinfoId != null">
+        MYINFO_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="personName != null">
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=BIGINT},
+      </if>
+      <if test="myinfoId != null">
+        #{myinfoId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spring_mybatis.top.sample.domain.PersonExample" resultType="java.lang.Long">
+    select count(*) from PERSON
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update PERSON
+    <set>
+      <if test="row.id != null">
+        ID = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.personName != null">
+        PERSON_NAME = #{row.personName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.age != null">
+        AGE = #{row.age,jdbcType=BIGINT},
+      </if>
+      <if test="row.myinfoId != null">
+        MYINFO_ID = #{row.myinfoId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update PERSON
+    set ID = #{row.id,jdbcType=BIGINT},
+      PERSON_NAME = #{row.personName,jdbcType=VARCHAR},
+      AGE = #{row.age,jdbcType=BIGINT},
+      MYINFO_ID = #{row.myinfoId,jdbcType=BIGINT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spring_mybatis.top.sample.domain.Person">
+    update PERSON
+    <set>
+      <if test="personName != null">
+        PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=BIGINT},
+      </if>
+      <if test="myinfoId != null">
+        MYINFO_ID = #{myinfoId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spring_mybatis.top.sample.domain.Person">
+    update PERSON
+    set PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=BIGINT},
+      MYINFO_ID = #{myinfoId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
