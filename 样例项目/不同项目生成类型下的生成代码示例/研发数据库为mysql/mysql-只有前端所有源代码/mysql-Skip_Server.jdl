@@ -1,0 +1,102 @@
+
+
+//本段信息是JDL基本信息，一般情况下不用修改。
+application { 
+  config { 
+    applicationType monolith 
+    authenticationType jwt 
+    baseName sampleProject_Mysql 
+    blueprints [] 
+    buildTool maven 
+    cacheProvider no 
+    clientFramework vue 
+    clientPackageManager npm 
+    clientTheme none 
+    databaseType sql 
+    devDatabaseType mysql 
+    dtoSuffix DTO 
+    enableHibernateCache false 
+    enableSwaggerCodegen false 
+    enableTranslation true 
+    jhiPrefix jhi 
+    jhipsterVersion "7.8.1" 
+    languages [zh-cn,en] 
+    messageBroker false 
+    nativeLanguage zh-cn 
+    otherModules [] 
+    packageName spring_mybatis.top.sample_mysql 
+    prodDatabaseType mysql 
+    reactive false 
+    searchEngine false 
+    serverPort 8080 
+    serviceDiscoveryType no 
+    skipUserManagement false 
+    testFrameworks [] 
+    websocket false 
+    } 
+  entities * 
+}
+//以上是JDL基本信息，一般情况下不用修改。
+
+
+entity Person {
+  personName String required,
+  age Long min(1) max(200)
+}
+
+entity Info {
+  comments String required,
+  image String required
+}
+
+// 人和详细信息是标准的一对一关系
+relationship OneToOne {
+  Person{myinfo(comments)} to Info{myperson}
+}
+// 人使用每n行分页
+paginate Person with pagination
+// 信息使用滚动到底再次拉取下一页
+paginate Info with infinite-scroll
+
+entity Employee {
+  empName String required,
+  salary Long min(1) max(100000)
+}
+
+entity Department {
+  deptName String required,
+  empNo Integer
+}
+
+// 每一个部门有很多员工，所以这个是标准的一对多关系。
+relationship OneToMany {
+  Department{myEmployees} to Employee{myDept(deptName)}
+}
+paginate Employee with pagination
+paginate Department with infinite-scroll
+
+entity Student {
+  stuName String required,
+  money Long min(1) max(100000),
+  language Language
+}
+
+// 枚举类型
+enum Language {
+  FRENCH ("法语"),
+  ENGLISH ("英语"),
+  Chinese ("汉语")
+}
+
+entity Lesson {
+  lesnName String required,
+  teacherName String required
+}
+
+// 同学和课程是标准的，多对多关系。
+relationship ManyToMany {
+  Student{mylesn(lesnName)} to Lesson{mystdt}
+}
+
+paginate Student with pagination
+paginate Lesson with infinite-scroll

@@ -41,6 +41,7 @@ import tech.jhipster.web.util.ResponseUtil;
 public class HelloWorldResource {
 
     private final Logger log = LoggerFactory.getLogger(HelloWorldResource.class);
+
     private static final String ENTITY_NAME = "helloWorld";
 
     @Value("${jhipster.clientApp.name}")
@@ -64,6 +65,7 @@ public class HelloWorldResource {
         }
         HelloWorld result = helloWorld;
         helloWorldMapper.insert(helloWorld);
+
         return ResponseEntity
             .created(new URI("/api/hello-worlds/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -96,8 +98,10 @@ public class HelloWorldResource {
         if (helloWorldMapper.selectByPrimaryKey(id) == null) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
         HelloWorld result = helloWorld;
         helloWorldMapper.updateByPrimaryKey(helloWorld);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, helloWorld.getId().toString()))

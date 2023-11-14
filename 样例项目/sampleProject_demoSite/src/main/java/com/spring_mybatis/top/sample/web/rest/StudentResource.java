@@ -53,6 +53,7 @@ import tech.jhipster.web.util.ResponseUtil;
 public class StudentResource {
 
     private final Logger log = LoggerFactory.getLogger(StudentResource.class);
+
     private static final String ENTITY_NAME = "student";
 
     @Value("${jhipster.clientApp.name}")
@@ -82,12 +83,14 @@ public class StudentResource {
         }
         Student result = student;
         studentMapper.insert(student);
+
         student
             .getMylesns()
             .stream()
             .forEach(newMylesn ->
                 relStudentMylesnMapper.insert(new RelStudentMylesnKey().studentId(student.getId()).mylesnId(newMylesn.getId()))
             );
+
         return ResponseEntity
             .created(new URI("/api/students/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -120,6 +123,7 @@ public class StudentResource {
         if (studentMapper.selectByPrimaryKey(id) == null) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
         Student result = student;
         studentMapper.updateByPrimaryKey(student);
 
@@ -135,6 +139,7 @@ public class StudentResource {
             .forEach(newMylesn ->
                 relStudentMylesnMapper.insert(new RelStudentMylesnKey().studentId(student.getId()).mylesnId(newMylesn.getId()))
             );
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, student.getId().toString()))
@@ -187,6 +192,7 @@ public class StudentResource {
                     relStudentMylesnMapper.insert(new RelStudentMylesnKey().studentId(student.getId()).mylesnId(newMylesn.getId()))
                 );
         }
+
         return ResponseUtil.wrapOrNotFound(
             result,
             HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, student.getId().toString())

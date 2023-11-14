@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.helloworld.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -254,6 +254,7 @@ class HelloWorldResourceIT {
         partialUpdatedHelloWorld.setId(helloWorld.getId());
 
         partialUpdatedHelloWorld.name(UPDATED_NAME);
+
         restHelloWorldMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedHelloWorld.getId())
@@ -261,6 +262,7 @@ class HelloWorldResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedHelloWorld))
             )
             .andExpect(status().isOk());
+
         // Validate the HelloWorld in the database
         List<HelloWorld> helloWorldList = helloWorldMapper.selectByExample(new HelloWorldExample());
         assertThat(helloWorldList).hasSize(databaseSizeBeforeUpdate);
@@ -282,6 +284,7 @@ class HelloWorldResourceIT {
         partialUpdatedHelloWorld.setId(helloWorld.getId());
 
         partialUpdatedHelloWorld.name(UPDATED_NAME).age(UPDATED_AGE);
+
         restHelloWorldMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedHelloWorld.getId())
@@ -289,6 +292,7 @@ class HelloWorldResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedHelloWorld))
             )
             .andExpect(status().isOk());
+
         // Validate the HelloWorld in the database
         List<HelloWorld> helloWorldList = helloWorldMapper.selectByExample(new HelloWorldExample());
         assertThat(helloWorldList).hasSize(databaseSizeBeforeUpdate);

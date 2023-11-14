@@ -79,22 +79,6 @@ describe('Component Tests', () => {
       });
     });
 
-    describe('Before route enter', () => {
-      it('Should retrieve data', async () => {
-        // GIVEN
-        const foundHelloWorld = { id: 123 };
-        helloWorldServiceStub.find.resolves(foundHelloWorld);
-        helloWorldServiceStub.retrieve.resolves([foundHelloWorld]);
-
-        // WHEN
-        comp.beforeRouteEnter({ params: { helloWorldId: 123 } }, null, cb => cb(comp));
-        await comp.$nextTick();
-
-        // THEN
-        expect(comp.helloWorld).toBe(foundHelloWorld);
-      });
-    });
-
     describe('Previous state', () => {
       it('Should go previous state', async () => {
         comp.previousState();

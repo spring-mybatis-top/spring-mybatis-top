@@ -40,5 +40,10 @@ public class UserDTO {
 
     // prettier-ignore
     @Override
-    public String toString() {        return "UserDTO{" +            "id='" + id + '\'' +            ", login='" + login + '\'' +"}";    }
+    public String toString() {
+        return "UserDTO{" +
+            "id='" + id + '\'' +
+            ", login='" + login + '\'' +
+            "}";
+    }
 }

@@ -99,22 +99,6 @@ describe('Component Tests', () => {
       });
     });
 
-    describe('Before route enter', () => {
-      it('Should retrieve data', async () => {
-        // GIVEN
-        const foundAllField = { id: 123 };
-        allFieldServiceStub.find.resolves(foundAllField);
-        allFieldServiceStub.retrieve.resolves([foundAllField]);
-
-        // WHEN
-        comp.beforeRouteEnter({ params: { allFieldId: 123 } }, null, cb => cb(comp));
-        await comp.$nextTick();
-
-        // THEN
-        expect(comp.allField).toBe(foundAllField);
-      });
-    });
-
     describe('Previous state', () => {
       it('Should go previous state', async () => {
         comp.previousState();

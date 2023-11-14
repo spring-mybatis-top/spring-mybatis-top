@@ -1,0 +1,26 @@
+{
+  "sampleProjectMysqlApp": {
+    "info": {
+      "home": {
+        "title": "Infos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Info",
+        "createOrEditLabel": "创建或编辑 Info",
+        "notFound": "No Infos found"
+      },
+      "created": "Info {{ param }} 创建成功",
+      "updated": "Info {{ param }} 更新成功",
+      "deleted": "Info {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Info {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Info"
+      },
+      "id": "ID",
+      "comments": "Comments",
+      "image": "Image",
+      "myperson": "Myperson"
+    }
+  }
+}

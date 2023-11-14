@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.sample.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -271,6 +271,7 @@ class DepartmentResourceIT {
         partialUpdatedDepartment.setId(department.getId());
 
         partialUpdatedDepartment.deptName(UPDATED_DEPT_NAME);
+
         restDepartmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedDepartment.getId())
@@ -278,6 +279,7 @@ class DepartmentResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedDepartment))
             )
             .andExpect(status().isOk());
+
         // Validate the Department in the database
         List<Department> departmentList = departmentMapper.selectByExample(new DepartmentExample());
         assertThat(departmentList).hasSize(databaseSizeBeforeUpdate);
@@ -299,6 +301,7 @@ class DepartmentResourceIT {
         partialUpdatedDepartment.setId(department.getId());
 
         partialUpdatedDepartment.deptName(UPDATED_DEPT_NAME).empNo(UPDATED_EMP_NO);
+
         restDepartmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedDepartment.getId())
@@ -306,6 +309,7 @@ class DepartmentResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedDepartment))
             )
             .andExpect(status().isOk());
+
         // Validate the Department in the database
         List<Department> departmentList = departmentMapper.selectByExample(new DepartmentExample());
         assertThat(departmentList).hasSize(databaseSizeBeforeUpdate);

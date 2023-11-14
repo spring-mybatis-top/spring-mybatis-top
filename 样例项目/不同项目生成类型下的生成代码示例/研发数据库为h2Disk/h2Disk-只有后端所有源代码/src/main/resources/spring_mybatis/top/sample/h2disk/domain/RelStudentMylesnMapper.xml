@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnMapper">
+  <resultMap id="BaseResultMap" type="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnKey">
+    <id column="STUDENT_ID" jdbcType="BIGINT" property="studentId" />
+    <id column="MYLESN_ID" jdbcType="BIGINT" property="mylesnId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    STUDENT_ID, MYLESN_ID
+  </sql>
+  <select id="selectByExample" parameterType="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from REL_STUDENT__MYLESN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnKey">
+    delete from REL_STUDENT__MYLESN
+    where STUDENT_ID = #{studentId,jdbcType=BIGINT}
+      and MYLESN_ID = #{mylesnId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnExample">
+    delete from REL_STUDENT__MYLESN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnKey">
+    insert into REL_STUDENT__MYLESN (STUDENT_ID, MYLESN_ID)
+    values (#{studentId,jdbcType=BIGINT}, #{mylesnId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnKey">
+    insert into REL_STUDENT__MYLESN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        STUDENT_ID,
+      </if>
+      <if test="mylesnId != null">
+        MYLESN_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="mylesnId != null">
+        #{mylesnId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="spring_mybatis.top.sample.h2disk.domain.RelStudentMylesnExample" resultType="java.lang.Long">
+    select count(*) from REL_STUDENT__MYLESN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update REL_STUDENT__MYLESN
+    <set>
+      <if test="row.studentId != null">
+        STUDENT_ID = #{row.studentId,jdbcType=BIGINT},
+      </if>
+      <if test="row.mylesnId != null">
+        MYLESN_ID = #{row.mylesnId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update REL_STUDENT__MYLESN
+    set STUDENT_ID = #{row.studentId,jdbcType=BIGINT},
+      MYLESN_ID = #{row.mylesnId,jdbcType=BIGINT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

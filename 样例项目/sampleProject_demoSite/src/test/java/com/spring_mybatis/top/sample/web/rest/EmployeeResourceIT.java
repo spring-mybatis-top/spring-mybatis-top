@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.sample.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -279,6 +279,7 @@ class EmployeeResourceIT {
         partialUpdatedEmployee.setId(employee.getId());
 
         partialUpdatedEmployee.empName(UPDATED_EMP_NAME);
+
         restEmployeeMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedEmployee.getId())
@@ -286,6 +287,7 @@ class EmployeeResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedEmployee))
             )
             .andExpect(status().isOk());
+
         // Validate the Employee in the database
         List<Employee> employeeList = employeeMapper.selectByExample(new EmployeeExample());
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
@@ -307,6 +309,7 @@ class EmployeeResourceIT {
         partialUpdatedEmployee.setId(employee.getId());
 
         partialUpdatedEmployee.empName(UPDATED_EMP_NAME).salary(UPDATED_SALARY);
+
         restEmployeeMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedEmployee.getId())
@@ -314,6 +317,7 @@ class EmployeeResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedEmployee))
             )
             .andExpect(status().isOk());
+
         // Validate the Employee in the database
         List<Employee> employeeList = employeeMapper.selectByExample(new EmployeeExample());
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);

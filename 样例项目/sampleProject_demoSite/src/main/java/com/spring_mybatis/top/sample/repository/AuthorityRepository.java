@@ -2,8 +2,9 @@
 package com.spring_mybatis.top.sample.repository;
 
 import com.spring_mybatis.top.sample.domain.Authority;
-import org.springframework.data.jpa.repository.JpaRepository;/**
+import org.springframework.data.jpa.repository.JpaRepository;
+
+/**
  * Spring Data JPA repository for the {@link Authority} entity.
  */
-
 public interface AuthorityRepository extends JpaRepository<Authority, String> {}

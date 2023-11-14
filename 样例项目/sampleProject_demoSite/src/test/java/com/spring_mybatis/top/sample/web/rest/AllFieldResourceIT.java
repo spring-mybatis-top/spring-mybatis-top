@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.sample.web.rest;
 
 import static com.spring_mybatis.top.sample.web.rest.TestUtil.sameInstant;
@@ -618,6 +618,7 @@ class AllFieldResourceIT {
             .nameBlobContentType(UPDATED_NAME_BLOB_CONTENT_TYPE)
             .nameImageBlob(UPDATED_NAME_IMAGE_BLOB)
             .nameImageBlobContentType(UPDATED_NAME_IMAGE_BLOB_CONTENT_TYPE);
+
         restAllFieldMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAllField.getId())
@@ -625,6 +626,7 @@ class AllFieldResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedAllField))
             )
             .andExpect(status().isOk());
+
         // Validate the AllFieldWithBLOBs in the database
         List<AllFieldWithBLOBs> allFieldList = allFieldMapper.selectByExampleWithBLOBs(new AllFieldExample());
         assertThat(allFieldList).hasSize(databaseSizeBeforeUpdate);
@@ -678,6 +680,7 @@ class AllFieldResourceIT {
             .nameImageBlob(UPDATED_NAME_IMAGE_BLOB)
             .nameImageBlobContentType(UPDATED_NAME_IMAGE_BLOB_CONTENT_TYPE)
             .nameTextBlob(UPDATED_NAME_TEXT_BLOB);
+
         restAllFieldMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAllField.getId())
@@ -685,6 +688,7 @@ class AllFieldResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedAllField))
             )
             .andExpect(status().isOk());
+
         // Validate the AllFieldWithBLOBs in the database
         List<AllFieldWithBLOBs> allFieldList = allFieldMapper.selectByExampleWithBLOBs(new AllFieldExample());
         assertThat(allFieldList).hasSize(databaseSizeBeforeUpdate);

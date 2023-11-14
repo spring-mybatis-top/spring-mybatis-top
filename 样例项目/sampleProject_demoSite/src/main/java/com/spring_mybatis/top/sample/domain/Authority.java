@@ -51,5 +51,9 @@ public class Authority implements Serializable {
 
     // prettier-ignore
     @Override
-    public String toString() {        return "Authority{" +            "name='" + name + '\'' +            "}";    }
+    public String toString() {
+        return "Authority{" +
+            "name='" + name + '\'' +
+            "}";
+    }
 }

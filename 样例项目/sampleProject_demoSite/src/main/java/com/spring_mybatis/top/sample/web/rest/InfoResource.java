@@ -48,6 +48,7 @@ import tech.jhipster.web.util.ResponseUtil;
 public class InfoResource {
 
     private final Logger log = LoggerFactory.getLogger(InfoResource.class);
+
     private static final String ENTITY_NAME = "info";
 
     @Value("${jhipster.clientApp.name}")
@@ -74,6 +75,7 @@ public class InfoResource {
         }
         Info result = info;
         infoMapper.insert(info);
+
         return ResponseEntity
             .created(new URI("/api/infos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -104,8 +106,10 @@ public class InfoResource {
         if (infoMapper.selectByPrimaryKey(id) == null) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
         Info result = info;
         infoMapper.updateByPrimaryKey(info);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, info.getId().toString()))

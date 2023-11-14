@@ -43,6 +43,7 @@ import tech.jhipster.web.util.ResponseUtil;
 public class DepartmentResource {
 
     private final Logger log = LoggerFactory.getLogger(DepartmentResource.class);
+
     private static final String ENTITY_NAME = "department";
 
     @Value("${jhipster.clientApp.name}")
@@ -66,6 +67,7 @@ public class DepartmentResource {
         }
         Department result = department;
         departmentMapper.insert(department);
+
         return ResponseEntity
             .created(new URI("/api/departments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -98,8 +100,10 @@ public class DepartmentResource {
         if (departmentMapper.selectByPrimaryKey(id) == null) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
         Department result = department;
         departmentMapper.updateByPrimaryKey(department);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, department.getId().toString()))

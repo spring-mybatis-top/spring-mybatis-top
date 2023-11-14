@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.sample.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -288,6 +288,7 @@ class InfoResourceIT {
         partialUpdatedInfo.setId(info.getId());
 
         partialUpdatedInfo.comments(UPDATED_COMMENTS);
+
         restInfoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedInfo.getId())
@@ -295,6 +296,7 @@ class InfoResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedInfo))
             )
             .andExpect(status().isOk());
+
         // Validate the Info in the database
         List<Info> infoList = infoMapper.selectByExample(new InfoExample());
         assertThat(infoList).hasSize(databaseSizeBeforeUpdate);
@@ -316,6 +318,7 @@ class InfoResourceIT {
         partialUpdatedInfo.setId(info.getId());
 
         partialUpdatedInfo.comments(UPDATED_COMMENTS).image(UPDATED_IMAGE);
+
         restInfoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedInfo.getId())
@@ -323,6 +326,7 @@ class InfoResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedInfo))
             )
             .andExpect(status().isOk());
+
         // Validate the Info in the database
         List<Info> infoList = infoMapper.selectByExample(new InfoExample());
         assertThat(infoList).hasSize(databaseSizeBeforeUpdate);

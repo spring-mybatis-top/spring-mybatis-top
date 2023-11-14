@@ -27,7 +27,9 @@ import tech.jhipster.config.JHipsterProperties;
 public class SecurityConfiguration {
 
     private final JHipsterProperties jHipsterProperties;
+
     private final TokenProvider tokenProvider;
+
     private final CorsFilter corsFilter;
     private final SecurityProblemSupport problemSupport;
 
@@ -65,7 +67,28 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // @formatter:off
-        http            .csrf().disable().addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class).exceptionHandling()                .authenticationEntryPoint(problemSupport)                .accessDeniedHandler(problemSupport).and()            .headers()            .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy())        .and()            .referrerPolicy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN)        .and()            .permissionsPolicy().policy("camera=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()")        .and()            .frameOptions()            .deny()        .and().sessionManagement()            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)        .and().authorizeRequests()
+        http
+            .csrf()
+            .disable()
+            .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
+            .exceptionHandling()
+                .authenticationEntryPoint(problemSupport)
+                .accessDeniedHandler(problemSupport)
+        .and()
+            .headers()
+            .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy())
+        .and()
+            .referrerPolicy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN)
+        .and()
+            .permissionsPolicy().policy("camera=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()")
+        .and()
+            .frameOptions()
+            .deny()
+        .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+            .authorizeRequests()
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()
@@ -78,7 +101,11 @@ public class SecurityConfiguration {
             .antMatchers("/management/info").permitAll()
             .antMatchers("/management/prometheus").permitAll()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
-.and()            .httpBasic().and()            .apply(securityConfigurerAdapter());return http.build();
+        .and()
+            .httpBasic()
+        .and()
+            .apply(securityConfigurerAdapter());
+        return http.build();
         // @formatter:on
     }
 

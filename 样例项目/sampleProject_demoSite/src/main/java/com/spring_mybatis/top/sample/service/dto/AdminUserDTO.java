@@ -46,6 +46,7 @@ public class AdminUserDTO {
     private String lastModifiedBy;
 
     private Instant lastModifiedDate;
+
     private Set<String> authorities;
 
     public AdminUserDTO() {
@@ -174,5 +175,20 @@ public class AdminUserDTO {
 
     // prettier-ignore
     @Override
-    public String toString() {        return "AdminUserDTO{" +            "login='" + login + '\'' +            ", firstName='" + firstName + '\'' +            ", lastName='" + lastName + '\'' +            ", email='" + email + '\'' +            ", imageUrl='" + imageUrl + '\'' +            ", activated=" + activated +            ", langKey='" + langKey + '\'' +            ", createdBy=" + createdBy +            ", createdDate=" + createdDate +            ", lastModifiedBy='" + lastModifiedBy + '\'' +            ", lastModifiedDate=" + lastModifiedDate +            ", authorities=" + authorities +            "}";    }
+    public String toString() {
+        return "AdminUserDTO{" +
+            "login='" + login + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", imageUrl='" + imageUrl + '\'' +
+            ", activated=" + activated +
+            ", langKey='" + langKey + '\'' +
+            ", createdBy=" + createdBy +
+            ", createdDate=" + createdDate +
+            ", lastModifiedBy='" + lastModifiedBy + '\'' +
+            ", lastModifiedDate=" + lastModifiedDate +
+            ", authorities=" + authorities +
+            "}";
+    }
 }

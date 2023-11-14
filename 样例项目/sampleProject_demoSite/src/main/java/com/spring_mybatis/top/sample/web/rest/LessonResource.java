@@ -43,6 +43,7 @@ import tech.jhipster.web.util.ResponseUtil;
 public class LessonResource {
 
     private final Logger log = LoggerFactory.getLogger(LessonResource.class);
+
     private static final String ENTITY_NAME = "lesson";
 
     @Value("${jhipster.clientApp.name}")
@@ -66,6 +67,7 @@ public class LessonResource {
         }
         Lesson result = lesson;
         lessonMapper.insert(lesson);
+
         return ResponseEntity
             .created(new URI("/api/lessons/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -98,8 +100,10 @@ public class LessonResource {
         if (lessonMapper.selectByPrimaryKey(id) == null) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
         Lesson result = lesson;
         lessonMapper.updateByPrimaryKey(lesson);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, lesson.getId().toString()))

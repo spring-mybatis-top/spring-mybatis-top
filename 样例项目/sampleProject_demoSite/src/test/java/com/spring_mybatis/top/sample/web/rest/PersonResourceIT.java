@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.sample.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -279,6 +279,7 @@ class PersonResourceIT {
         partialUpdatedPerson.setId(person.getId());
 
         partialUpdatedPerson.personName(UPDATED_PERSON_NAME);
+
         restPersonMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedPerson.getId())
@@ -286,6 +287,7 @@ class PersonResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedPerson))
             )
             .andExpect(status().isOk());
+
         // Validate the Person in the database
         List<Person> personList = personMapper.selectByExample(new PersonExample());
         assertThat(personList).hasSize(databaseSizeBeforeUpdate);
@@ -307,6 +309,7 @@ class PersonResourceIT {
         partialUpdatedPerson.setId(person.getId());
 
         partialUpdatedPerson.personName(UPDATED_PERSON_NAME).age(UPDATED_AGE);
+
         restPersonMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedPerson.getId())
@@ -314,6 +317,7 @@ class PersonResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedPerson))
             )
             .andExpect(status().isOk());
+
         // Validate the Person in the database
         List<Person> personList = personMapper.selectByExample(new PersonExample());
         assertThat(personList).hasSize(databaseSizeBeforeUpdate);

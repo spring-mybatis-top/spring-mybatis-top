@@ -1,6 +1,16 @@
 # allFieldSupport
 
-This application was generated using JHipster 7.8.1, you can find documentation and help at [https://www.jhipster.tech](https://www.jhipster.tech).
+本项目源代码是由 Spring-Mybatis-Vue 源代码生成器生成， 文档说明: [spring-mybatis.top](spring-mybatis.top)
+
+## 背景介绍
+
+本软件是在 JHipster 基础上进行二次开发的，Jhipster 是商业友好的开源许可证（Apache-2.0 license）,github 20k 星，4k fork [https://github.com/jhipster/generator-jhipster](https://github.com/jhipster/generator-jhipster)。
+
+本软件还使用了 JDL Studio，JDL Studio 同样是商业友好开源许可证（Apache-2.0 license） [https://github.com/jhipster/jdl-studio](https://github.com/jhipster/jdl-studio)。
+
+## Jhipster 相关使用说明
+
+You can find documentation and help at [https://www.jhipster.tech](https://www.jhipster.tech).
 
 ## Project Structure
 

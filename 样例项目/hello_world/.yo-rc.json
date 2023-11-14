@@ -25,7 +25,7 @@
     "gradleEnterpriseHost": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.8.1",
-    "jwtSecretKey": "MzJjMzk4NDk5YTg0MzQyMGRlZmZiMzllYzBkODY3ZDIyYmEyMzg0Mjc5OTE2NGEzYTBjYjFkNTllNzA1MzNlYjg0ODgwMmM4MjNlNzdkZjk5OWE2ZDhkMzU0NDdhNDFmN2JiZDEyNWEzOGE4ZDg5MjI2NDUyZGIxMjNlMDEyZGI=",
+    "jwtSecretKey": "NTc3MzBkNWZkNTczNGZhY2FmZDc5MzIzNWM3ZjJkYjYyYmYwODc2NTg4NzQzMDA4YjBkYmEyYzI4ZDBhMjI0NDg4NTJlMjY0OGFlMDc4ZjI2NmVkYzVmMTZkMjM2Y2FhMzA0OWVkMjljNmY3MDgzNDViNGQwMTQ0NDJiYTdjMDI=",
     "languages": ["zh-cn", "en"],
     "lastLiquibaseTimestamp": 1320969660000,
     "messageBroker": false,

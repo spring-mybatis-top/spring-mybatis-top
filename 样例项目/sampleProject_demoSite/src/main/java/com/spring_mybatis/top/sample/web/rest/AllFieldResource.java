@@ -35,6 +35,7 @@ import tech.jhipster.web.util.ResponseUtil;
 public class AllFieldResource {
 
     private final Logger log = LoggerFactory.getLogger(AllFieldResource.class);
+
     private static final String ENTITY_NAME = "allField";
 
     @Value("${jhipster.clientApp.name}")
@@ -59,6 +60,7 @@ public class AllFieldResource {
         }
         AllFieldWithBLOBs result = allFieldWithBLOBs;
         allFieldMapper.insert(allFieldWithBLOBs);
+
         return ResponseEntity
             .created(new URI("/api/all-fields/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -91,8 +93,10 @@ public class AllFieldResource {
         if (allFieldMapper.selectByPrimaryKey(id) == null) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
         AllFieldWithBLOBs result = allFieldWithBLOBs;
         allFieldMapper.updateByPrimaryKeyWithBLOBs(allFieldWithBLOBs);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, allFieldWithBLOBs.getId().toString()))

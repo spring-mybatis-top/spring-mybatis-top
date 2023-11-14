@@ -1,5 +1,5 @@
 //本代码由 http://spring-mybatis.top 生成
-//release# release_1.2.25 @ 2023年 10月 23日 星期一 11:56:43 CST
+//release# RELEASE_NAME
 package com.spring_mybatis.top.sample.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -288,6 +288,7 @@ class LessonResourceIT {
         partialUpdatedLesson.setId(lesson.getId());
 
         partialUpdatedLesson.lesnName(UPDATED_LESN_NAME);
+
         restLessonMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedLesson.getId())
@@ -295,6 +296,7 @@ class LessonResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedLesson))
             )
             .andExpect(status().isOk());
+
         // Validate the Lesson in the database
         List<Lesson> lessonList = lessonMapper.selectByExample(new LessonExample());
         assertThat(lessonList).hasSize(databaseSizeBeforeUpdate);
@@ -316,6 +318,7 @@ class LessonResourceIT {
         partialUpdatedLesson.setId(lesson.getId());
 
         partialUpdatedLesson.lesnName(UPDATED_LESN_NAME).teacherName(UPDATED_TEACHER_NAME);
+
         restLessonMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedLesson.getId())
@@ -323,6 +326,7 @@ class LessonResourceIT {
                     .content(TestUtil.convertObjectToJsonBytes(partialUpdatedLesson))
             )
             .andExpect(status().isOk());
+
         // Validate the Lesson in the database
         List<Lesson> lessonList = lessonMapper.selectByExample(new LessonExample());
         assertThat(lessonList).hasSize(databaseSizeBeforeUpdate);
